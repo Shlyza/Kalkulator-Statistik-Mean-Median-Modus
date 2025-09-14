@@ -13,7 +13,6 @@ int main() {
     double data[KAPASITAS_MAKS];
     int n = 0;
 
-    std::cout << "=== Kalkulator Statistik (Array + Input String) ===\n";
     std::cout << "Masukkan semua data dalam satu baris (pisahkan dengan spasi):" << std::endl;
 
     std::string line;
