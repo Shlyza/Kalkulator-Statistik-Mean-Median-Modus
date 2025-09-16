@@ -7,17 +7,18 @@ double hitungMean(const double data[], int n);
 double hitungMedian(const double data[], int n);
 void hitungModus(const double data[], int n, double hasilModus[], int& jumlahModus);
 void hitungKuartil(const double data[], int n, double& q1, double& q2, double& q3);
+using namespace std;
 
 int main() {
     const int KAPASITAS_MAKS = 1000;
     double data[KAPASITAS_MAKS];
     int n = 0;
 
-    std::cout << "Masukkan semua data dalam satu baris (pisahkan dengan spasi):" << std::endl;
+    cout << "Masukkan semua data dalam satu baris (pisahkan dengan spasi):" << endl;
 
-    std::string line;
-    std::getline(std::cin, line);
-    std::stringstream ss(line);
+    string line;
+    getline(cin, line);
+    stringstream ss(line);
     double number;
 
     while (n < KAPASITAS_MAKS && ss >> number) {
@@ -26,42 +27,42 @@ int main() {
     }
 
     if (n == 0) {
-        std::cout << "Tidak ada data yang dimasukkan." << std::endl;
+        cout << "Tidak ada data yang dimasukkan." << endl;
         return 1;
     }
     
-    std::sort(data, data + n);
+    sort(data, data + n);
 
-    std::cout << "\n--- Hasil Perhitungan ---\n";
+    cout << "\n--- Hasil Perhitungan ---\n";
 
-    std::cout << "Mean (Rata-rata)   : " << hitungMean(data, n) << std::endl;
-    std::cout << "Median (Nilai Tengah): " << hitungMedian(data, n) << std::endl;
+    cout << "Mean (Rata-rata)   : " << hitungMean(data, n) << endl;
+    cout << "Median (Nilai Tengah): " << hitungMedian(data, n) << endl;
 
     double hasilModus[KAPASITAS_MAKS];
     int jumlahModus = 0;
     hitungModus(data, n, hasilModus, jumlahModus);
 
-    std::cout << "Modus                : ";
+    cout << "Modus                : ";
     if (jumlahModus == 0) {
-        std::cout << "Tidak ada modus." << std::endl;
+        cout << "Tidak ada modus." << endl;
     } else {
         for (int i = 0; i < jumlahModus; ++i) {
-            std::cout << hasilModus[i] << (i == jumlahModus - 1 ? "" : ", ");
+            cout << hasilModus[i] << (i == jumlahModus - 1 ? "" : ", ");
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 
     double q1, q2, q3;
     if (n >= 3) {
         hitungKuartil(data, n, q1, q2, q3);
-        std::cout << "Kuartil 1 (Q1)       : " << q1 << std::endl;
-        std::cout << "Kuartil 2 (Q2/Median): " << q2 << std::endl;
-        std::cout << "Kuartil 3 (Q3)       : " << q3 << std::endl;
+        cout << "Kuartil 1 (Q1)       : " << q1 << endl;
+        cout << "Kuartil 2 (Q2/Median): " << q2 << endl;
+        cout << "Kuartil 3 (Q3)       : " << q3 << endl;
     } else {
-        std::cout << "Kuartil tidak dapat dihitung (data kurang dari 3)." << std::endl;
+        cout << "Kuartil tidak dapat dihitung (data kurang dari 3)." << endl;
     }
     
-    std::cout << "-------------------------\n";
+    cout << "-------------------------\n";
 
     return 0;
 }
